@@ -42,4 +42,25 @@ export default defineConfig({
       }
     })
   ],
+  build: {
+    // Optimize bundle size and loading
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          wallet: ['@reown/appkit', '@reown/appkit-adapter-wagmi', 'wagmi', 'viem'],
+          utils: ['axios', 'ethers']
+        }
+      }
+    },
+    // Increase chunk size warning limit
+    chunkSizeWarningLimit: 1000,
+    // Enable source maps for better debugging
+    sourcemap: false
+  },
+  server: {
+    // Development server configuration
+    host: true,
+    port: 5173
+  }
 })

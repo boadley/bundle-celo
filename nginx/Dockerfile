@@ -5,7 +5,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Copy package.json from the frontend directory and install dependencies.
-COPY ../frontend/package*.json ./
+COPY frontend/package*.json ./
 RUN npm install
 
 # Declare the build arguments that will be passed from docker-compose.
@@ -21,7 +21,7 @@ ENV VITE_APP_URL=${VITE_APP_URL}
 ENV VITE_WALLETCONNECT_PROJECT_ID=${VITE_WALLETCONNECT_PROJECT_ID}
 
 # Copy the rest of the frontend source code and run the build.
-COPY ../frontend/ .
+COPY frontend/ .
 RUN npm run build
 
 # ---- Stage 2: Build the final Nginx image ----
