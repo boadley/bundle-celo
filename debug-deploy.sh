@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "🔍 Bundle App Deployment Debug Script"
+echo "does it works?"
 echo "======================================"
 
 # Check if Docker is running
